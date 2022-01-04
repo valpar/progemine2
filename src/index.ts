@@ -6,6 +6,9 @@ import cors from 'cors';
 import loggerMiddleware from './components/general/middlewares';
 import moviesRouter from './components/movies/routes';
 import pingRouter from './components/ping/routes';
+import usersRouter from './components/users/routes';
+
+import { login } from './components/users/controller';
 
 const app: Application = express();
 
@@ -18,6 +21,9 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openapi));
 
 app.get('/ping', pingRouter);
 app.use('/movies', moviesRouter);
+app.use('/users', usersRouter);
+
+app.post('/login', login);
 
 app.listen(port, () => {
   // eslint-disable-next-line no-console
