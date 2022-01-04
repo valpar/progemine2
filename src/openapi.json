@@ -1,0 +1,56 @@
+{
+    "openapi":"3.0.2",
+    "info": {
+      "title":"Movie review API",
+      "version":"1.0"
+    },
+    "servers": [
+      {"url":"https://localhost:3000"}
+    ],
+    "paths": {
+        "/movies": {
+            "get": {
+                "description": "Get list of movies",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "List of movies",
+                        "content": {
+                            "application/json":{
+                                "schema":{
+                                    "type": "object",
+                                    "properties": {
+                                        "movies":{
+                                            "type": "array",
+                                            "items":{
+                                                "type": "object",
+                                                "properties": {
+                                                    "id":{
+                                                        "type": "string",
+                                                        "example":"randomly generated id"
+                                                    },
+                                                    "title":{
+                                                        "type": "string",
+                                                        "example":"Pealkiri"
+                                                    },
+                                                    "description":{
+                                                        "type": "string",
+                                                        "example":"Filmi kirjeldus"
+                                                    },
+                                                    "author":{
+                                                        "type": "string",
+                                                        "example":"Filmi kirjelduse autor"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+  }
