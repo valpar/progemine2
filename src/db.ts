@@ -12,7 +12,7 @@ const db: Db = {
             id: 'qwert',
             title: 'Matrix',
             description: 'Super lahe film.',
-            author: 'Valmar'
+            author: 'DGvMyLGqfFb8aFEC9GFu4'
         },
         {
             id: 'asdf',

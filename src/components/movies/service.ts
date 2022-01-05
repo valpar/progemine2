@@ -3,9 +3,10 @@ import { nanoid } from 'nanoid';
 import {Movie, NewMovie} from './interfaces';
 
 const moviesService = {
-    getAllMovies: () => {
+    getAllMovies: (id: string) => {
     const { movies } = db;
-    return movies;
+    const usersMovies = movies.filter((movie) => movie.author === id);
+    return usersMovies;
     },
     getMovieById: (id: string): Movie | undefined => {
         const movie: Movie | undefined = db.movies.find((element: Movie) => element.id === id);

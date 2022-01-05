@@ -1,5 +1,6 @@
 import { Request, Response} from 'express';
 import hashService from '../general/services/hashService';
+import jwtService from '../general/services/jwtService';
 import { NewUser } from './interfaces';
 import usersService from './service';
   
@@ -37,8 +38,9 @@ const login = async (req: Request, res: Response) => {
             error: 'Check password.'
         });
     }
+    const token = await jwtService.sign(user);
     return res.status(200).json({
-        token: 'token',
+        token,
     });
 };
 
