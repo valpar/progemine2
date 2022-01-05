@@ -1,27 +1,35 @@
-import db from '../../db';
-import { nanoid } from 'nanoid';
-import { NewUser, User } from './interfaces';
+import { INewUser, IUser } from './interfaces';
 import hashService from '../general/services/hashService';
+import pool from '../../database';
+import { FieldPacket, ResultSetHeader } from 'mysql2';
 
 const usersService = {
-    createUser: async (newUser: NewUser):Promise<string> => {
-        const id = nanoid();
-        const hashedPassword = await hashService.hash(newUser.password);
-        const user: User = {
-            id,
-            ...newUser,
-            password: hashedPassword,
-        };
-        db.users.push(user);
-        return id;
+    createUser: async (newUser: INewUser):Promise<number | false> => {
+        try {
+            const hashedPassword = await hashService.hash(newUser.password);
+            const user: INewUser = {
+                ...newUser,
+                password: hashedPassword,
+            };
+                const [result]: [ResultSetHeader, FieldPacket[]] = await pool.query('INSERT INTO users SET ?;', [user]);
+            return result.insertId;
+        } catch (error) {
+            console.log(error);
+            return false;
+        }
     },
-    getUsers: (): User[] => {
-        const { users } = db;
+    getUsers: async (): Promise<IUser[]> => {
+        const [users]: [IUser[], FieldPacket[]] = await pool.query('SELECT id, email, password, dateCreated, dateUpdated FROM users Where dateDeleted IS NULL;');
         return users;
     },
-    getUserByEmail: (email: string):User | undefined => {
-        const user = db.users.find((element) => element.email === email);
-        return user;
+    getUserByEmail: async (email: string): Promise<IUser | false> => {
+        try {
+            const [users]: [IUser[], FieldPacket[]] = await pool.query('SELECT * FROM users WHERE email = ? AND dateDeleted IS NULL', [email]);
+            return users[0];
+        } catch (error) {
+            console.log(error);
+            return false;
+        }
     },
 };
 

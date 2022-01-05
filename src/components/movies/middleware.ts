@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 
 const createPostValidator = (req: Request, res: Response, next: NextFunction) =>{
-    const { title, description, author } = req.body;
+    const { title, description } = req.body;
     if(!title){
         return res.status(400).json({
             message: `No movie title provided.`,
@@ -10,11 +10,6 @@ const createPostValidator = (req: Request, res: Response, next: NextFunction) =>
     if(!description){
         return res.status(400).json({
             message: `No movie description provided.`,
-          });
-    }
-    if(!author){
-        return res.status(400).json({
-            message: `No movie review author provided.`,
           });
     }
     return next();

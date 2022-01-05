@@ -1,9 +1,9 @@
 import jwt from 'jsonwebtoken';
-import { User } from '../../users/interfaces';
+import { IUser } from '../../users/interfaces';
 import config from '../../../config';
 
 const jwtService = {
-    sign: async (user: User):Promise<string> => {
+    sign: async (user: IUser):Promise<string> => {
         const payload = {
             id: user.id,
         };

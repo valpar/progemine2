@@ -1,13 +1,13 @@
+import { RowDataPacket } from 'mysql2';
 
-
-interface NewMovie {
+interface INewMovie {
     title: string;
     description: string;
-    author: string;
+    usersId: number;
 }
 
-interface Movie extends NewMovie {
-    id: string;
+interface IMovie extends INewMovie, RowDataPacket {
+    id: number;
 }
 
-export {Movie, NewMovie};
+export {IMovie, INewMovie};
