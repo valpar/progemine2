@@ -4,7 +4,8 @@ import {Movie, NewMovie} from './interfaces';
 
 //get movies controller
 const getAllMovies = (req: Request, res: Response) => {
-    const movies: Movie[] = moviesService.getAllMovies();
+  const { id } = res.locals.user;
+    const movies: Movie[] = moviesService.getAllMovies(id);
       return res.status(200).json({
         movies,
       });
