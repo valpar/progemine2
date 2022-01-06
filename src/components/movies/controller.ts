@@ -27,7 +27,7 @@ const getAllMovies = async (req: Request, res: Response) => {
   
   //create movie controller
   const createMovie = async (req: Request, res: Response) => {
-    const usersId = res.locals.user.Id
+    const usersId = res.locals.user.id
     const { title, description} = req.body;
     const newMovie: INewMovie = {
         title,

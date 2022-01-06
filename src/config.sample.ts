@@ -4,7 +4,7 @@ const config = {
         host: 'localhost',
         user: 'root',
         password: 'mockpassword',
-        database: 'blog'
+        database: 'movieblog'
     }
 };
 

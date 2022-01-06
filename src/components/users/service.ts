@@ -11,7 +11,7 @@ const usersService = {
                 ...newUser,
                 password: hashedPassword,
             };
-                const [result]: [ResultSetHeader, FieldPacket[]] = await pool.query('INSERT INTO users SET ?;', [user]);
+            const [result]: [ResultSetHeader, FieldPacket[]] = await pool.query('INSERT INTO users SET ?;', [user]);
             return result.insertId;
         } catch (error) {
             console.log(error);

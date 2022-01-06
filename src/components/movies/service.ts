@@ -6,7 +6,7 @@ import {IMovie, INewMovie} from './interfaces';
 const moviesService = {
     getAllMovies: async (): Promise<IMovie[] | false> => {
         try {
-            const [movies]: [IMovie[], FieldPacket[]] = await pool.query('SELECT M.id, M.title, M.content, M.dateCreated, M.dateUpdated, U.email FROM movies M INNER JOIN users U on M.usersId = U.id WHERE m.dateDeletated IS NULL;');
+            const [movies]: [IMovie[], FieldPacket[]] = await pool.query('SELECT M.id, M.title, M.description, M.dateCreated, M.dateUpdated, U.email FROM movies M INNER JOIN users U on M.usersId = U.id WHERE M.dateDeleted IS NULL;');
             return movies;
         } catch (error) {
             console.log(error);
@@ -15,7 +15,7 @@ const moviesService = {
     },
     getMovieById: async (id: string): Promise<IMovie | false> => {
         try {
-            const [movies]: [IMovie[], FieldPacket[]] = await pool.query('SELECT M.id, M.title, M.content, M.dateCreated, M.dateUpdated, U.email FROM movies M INNER JOIN users U on M.usersId = U.id WHERE M.id = ? AND m.dateDeletated IS NULL;', [id]);
+            const [movies]: [IMovie[], FieldPacket[]] = await pool.query('SELECT M.id, M.title, M.description, M.dateCreated, M.dateUpdated, U.email FROM movies M INNER JOIN users U on M.usersId = U.id WHERE M.id = ? AND M.dateDeleted IS NULL;', [id]);
             return movies[0];
         } catch (error) {
             console.log(error);
