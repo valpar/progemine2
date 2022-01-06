@@ -4,7 +4,7 @@ import { INewMovie} from './interfaces';
 
 //get movies controller
 const getAllMovies = async (req: Request, res: Response) => {
-  const { id } = res.locals.user;
+  //const { id } = res.locals.user;
     const movies = await moviesService.getAllMovies();
       return res.status(200).json({
         movies,
@@ -27,7 +27,7 @@ const getAllMovies = async (req: Request, res: Response) => {
   
   //create movie controller
   const createMovie = async (req: Request, res: Response) => {
-    const usersId = res.locals.user.id
+    const usersId = res.locals.user.id;
     const { title, description} = req.body;
     const newMovie: INewMovie = {
         title,
@@ -35,7 +35,7 @@ const getAllMovies = async (req: Request, res: Response) => {
         usersId
     }
     const id = await moviesService.createMovie(newMovie);
-     return res.status(200).json({
+     return res.status(201).json({
         id,
       });
   };

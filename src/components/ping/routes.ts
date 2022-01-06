@@ -4,6 +4,6 @@ import pingController from './controller';
 const router: Router = express.Router();
 
 router
-    .get('/', pingController)
+    .get('/ping', pingController)
 
 export default router;
