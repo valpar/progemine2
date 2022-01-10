@@ -8,6 +8,7 @@ import moviesRouter from './components/movies/routes';
 import pingRouter from './components/ping/routes';
 import usersRouter from './components/users/routes';
 import directorsRouter from './components/directors/routes';
+import genresRouter from './components/genre/routes';
 
 import { login } from './components/users/controller';
 
@@ -26,6 +27,8 @@ app.use('/movies', moviesRouter);
 app.use('/users', usersRouter);
 //directors routes
 app.use('/directors', directorsRouter);
+//genres routes
+app.use('/genres', genresRouter);
 
 app.post('/login', login);
 
