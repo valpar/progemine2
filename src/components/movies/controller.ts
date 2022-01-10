@@ -28,10 +28,11 @@ const getAllMovies = async (req: Request, res: Response) => {
   //create movie controller
   const createMovie = async (req: Request, res: Response) => {
     const usersId = res.locals.user.id;
-    const { title, description} = req.body;
+    const { title, description, director} = req.body;
     const newMovie: INewMovie = {
         title,
         description,
+        director,
         usersId
     }
     const id = await moviesService.createMovie(newMovie);

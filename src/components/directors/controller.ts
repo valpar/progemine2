@@ -27,7 +27,6 @@ const getAllDirectors = async (req: Request, res: Response) => {
   
   //create director controller
   const createDirector = async (req: Request, res: Response) => {
-    const usersId = res.locals.user.id;
     const { name } = req.body;
     const newDirector: INewDirector = {
         name,
