@@ -6,12 +6,12 @@ import app from '../src/app';
 let token: string;
 
 const user = {
-  "email": "juku@juurikas.ee",
-  "password": "juku",
+  "email": "ace@gmail.com",
+  "password": "ventura",
 }
 
 const newPost = {
-  "title": "Pealkiti",
+  "title": "Pealkiri",
   "description": "Sisu kirjeldus",
 }
 
