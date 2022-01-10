@@ -3,7 +3,7 @@ import pool from '../../database';
 import {IDirector, INewDirector} from './interfaces';
 
 
-const directorssService = {
+const directorsService = {
     getAllDirectors: async (): Promise<IDirector[] | false> => {
         try {
             const [directors]: [IDirector[], FieldPacket[]] = await pool.query('SELECT D.id, D.title, D.description, D.dateCreated, D.dateUpdated, U.email FROM directors M INNER JOIN users U on D.usersId = U.id WHERE D.dateDeleted IS NULL;');
@@ -35,4 +35,4 @@ const directorssService = {
 }
 
 
-export default directorssService;
+export default directorsService;

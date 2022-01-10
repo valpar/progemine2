@@ -7,6 +7,7 @@ import loggerMiddleware from './components/general/middlewares/middlewares';
 import moviesRouter from './components/movies/routes';
 import pingRouter from './components/ping/routes';
 import usersRouter from './components/users/routes';
+import directorsRouter from './components/directors/routes';
 
 import { login } from './components/users/controller';
 
@@ -23,6 +24,8 @@ app.get('/ping', pingRouter);
 app.use('/movies', moviesRouter);
 //users routes
 app.use('/users', usersRouter);
+//directors routes
+app.use('/directors', directorsRouter);
 
 app.post('/login', login);
 
